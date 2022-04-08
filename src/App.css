@@ -1,0 +1,19 @@
+.App {
+  padding: 10px;
+}
+
+.queryResult {
+  margin: 10px;
+}
+
+.domainTitle {
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold;
+  margin: 0 auto;
+}
+
+.domainResult {
+  font-size: 18px;
+  font-weight: bolder;
+}

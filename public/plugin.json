@@ -1,0 +1,24 @@
+{
+  "main": "index.html",
+  "logo": "logo.png",
+  "preload": "preload.js",
+  "pluginSetting": {
+    "single": false
+  },
+  "features": [
+    {
+      "code": "dig",
+      "explain": "高级域名解析",
+      "cmds": [
+        "dig",
+        "域名",
+        {
+          "type": "regex",
+          "label": "解析域名",
+          "match": "/^([a-z0-9]+(-[a-z0-9]+)*\\.)+[a-z]{2,}$/",
+          "minLength": 4
+        }
+      ]
+    }
+  ]
+}
