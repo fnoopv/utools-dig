@@ -46,6 +46,7 @@ const App = () => {
             <Option value="119.29.29.29">119.29.29.29</Option>
             <Option value="223.5.5.5">223.5.5.5</Option>
             <Option value="8.8.8.8">8.8.8.8</Option>
+            <Option value="1.1.1.1">1.1.1.1</Option>
           </Select>
         </Form.Item>
       </Col>,
