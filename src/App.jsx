@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Form, Row, Col, Input, Button, Select, Empty, Table } from "antd";
+import { Form, Row, Col, Input, Button, Select, Empty, Table, message } from "antd";
 import { DownOutlined, UpOutlined } from "@ant-design/icons";
 import "./App.css";
 
@@ -58,40 +58,44 @@ const App = () => {
   async function queryDomain(values) {
     setQueryValue(values);
     const result = await query(values);
-    for (const val of result) {
-      if (!(val.result instanceof Array)) {
-        if (reg.test(val.result)) {
-          const endResult = await query({domain: val.result, type: "A", dns: queryValue.dns})
-          console.log("endResult: ", endResult)
-          result.push(...endResult)
-        } else {
-          console.log("no match")
+    if (result.msg.length > 0) {
+      message.error(result.msg, 3)
+      setAddress([])
+    } else if (result.data.length === 0) {
+      message.info("没有相关解析记录", 3)
+      setAddress([])
+    } else {
+      for (const val of result.data) {
+        if (!(val.result instanceof Array)) {
+          if (reg.test(val.result)) {
+            const endResult = await query({ domain: val.result, type: "A", dns: queryValue.dns })
+            result.data.push(...endResult.data)
+          }
         }
       }
+      setAddress(result.data);
     }
-    setAddress(result);
   }
 
   async function query(values) {
-    const r2 =  await window.query(values);
-    console.log("r2: ", r2)
+    const r2 = await window.query(values);
     return r2;
   }
 
   const columns = [
     {
-        title: "域名",
-        dataIndex: "domain"
+      title: "域名",
+      dataIndex: "domain"
     },
     {
-        title: "记录类型",
-        dataIndex: "type"
+      title: "记录类型",
+      dataIndex: "type"
     },
     {
-        title: "记录值",
-        dataIndex: "result"
+      title: "记录值",
+      dataIndex: "result"
     }
-]
+  ]
 
   const resultList = () => {
     return (
