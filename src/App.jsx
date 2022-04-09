@@ -122,6 +122,10 @@ const App = () => {
                   required: true,
                   message: "必须输入域名!",
                 },
+                {
+                  pattern: /[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+/,
+                  message: "域名格式不正确"
+                }
               ]}
             >
               <Input placeholder="输入域名" size="large" autoFocus />
