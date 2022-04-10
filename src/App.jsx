@@ -149,6 +149,8 @@ const App = () => {
               }}
               onClick={() => {
                 form.resetFields();
+                setAddress([]);
+                setQueryValue([]);
               }}
             >
               重置
@@ -159,7 +161,6 @@ const App = () => {
               }}
               onClick={() => {
                 setExpand(!expand);
-                setAddress("");
               }}
             >
               {expand ? <UpOutlined /> : <DownOutlined />} 高级选项
