@@ -35,7 +35,7 @@ function checkError(err) {
     case "ETIMEOUT":
       return "连接DNS服务器超时,请重试";
     case "ENOTFOUND":
-      return "未知域名,请检查域名有效性";
+      return "没有找到对应类型的解析记录, 请检查域名或解析类型";
     case "ESERVFAIL":
       return "DNS服务器故障, 请更换服务器重试";
     case "EREFUSED":
