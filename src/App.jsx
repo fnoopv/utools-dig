@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Form, Row, Col, Input, Button, Select, Empty, Table, message } from "antd";
 import { DownOutlined, UpOutlined } from "@ant-design/icons";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 import "./App.css";
 
 const { Option } = Select;
@@ -85,15 +86,28 @@ const App = () => {
   const columns = [
     {
       title: "域名",
+      key: "domain",
       dataIndex: "domain"
     },
     {
       title: "记录类型",
+      key: "type",
       dataIndex: "type"
     },
     {
       title: "记录值",
+      key: "result",
       dataIndex: "result"
+    },
+    {
+      title: "操作",
+      key: "action",
+      render: (text, record) => (
+          <CopyToClipboard text="hello"
+            onCopy={() => message.success(`${text.result} 已复制~`, 3)}>
+            <a>复制</a>
+          </CopyToClipboard>
+      ),
     }
   ]
 
