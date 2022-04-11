@@ -12,7 +12,7 @@ window.query = async (values) => {
   };
 
   const resolver = new Resolver(resolverOption);
-  resolver.setServers([values.dns]);
+  resolver.setServers(values.dns);
 
   await resolver.resolve(values.domain, values.type).then(
     (res) => {

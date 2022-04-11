@@ -17,7 +17,7 @@ const App = () => {
   const defaultQuery = {
     domain: "",
     type: "A",
-    dns: "114.114.114.114",
+    dns: ["114.114.114.114"],
   };
 
   useEffect(() => {
@@ -42,12 +42,12 @@ const App = () => {
       </Col>,
       <Col span={8} key="dns">
         <Form.Item name="dns" label="DNS服务器">
-          <Select>
-            <Option value="114.114.114.114">114.114.114.114</Option>
-            <Option value="119.29.29.29">119.29.29.29</Option>
-            <Option value="223.5.5.5">223.5.5.5</Option>
-            <Option value="8.8.8.8">8.8.8.8</Option>
-            <Option value="1.1.1.1">1.1.1.1</Option>
+          <Select mode="multiple" allowClear placeholder="选择DNS服务器">
+            <Option key="114.114.114.114">114.114.114.114</Option>
+            <Option key="119.29.29.29">119.29.29.29</Option>
+            <Option key="223.5.5.5">223.5.5.5</Option>
+            <Option key="8.8.8.8">8.8.8.8</Option>
+            <Option key="1.1.1.1">1.1.1.1</Option>
           </Select>
         </Form.Item>
       </Col>,
