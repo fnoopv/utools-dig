@@ -6,6 +6,6 @@
 开源地址: [utools-dig](https://github.com/fnoopv/utools-dig)
 
 todo:  
- [ ] 更明确的报错信息  
+ [x] 更明确的报错信息  
  [ ] 支持其他类型的DNS解析  
  [ ] 支持从utools输入框匹配解析
