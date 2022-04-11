@@ -56,7 +56,7 @@ const App = () => {
         </Form.Item>
       </Col>,
       <Col span={8} key="dns">
-        <Form.Item name="dns" label="DNS地址" tooltip="DNS服务地址,可以多选">
+        <Form.Item name="dns" label="DNS地址" tooltip="DNS服务地址,可以多选" rules={[{required: true, message: "必须指定DNS服务器"}]}>
           <Select mode="multiple" placeholder="选择DNS服务器">
             <Option key="114.114.114.114">114.114.114.114</Option>
             <Option key="119.29.29.29">119.29.29.29</Option>
