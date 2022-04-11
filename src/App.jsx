@@ -37,7 +37,16 @@ const App = () => {
 
   useEffect(() => {
     window.utools.onPluginEnter(({ code, type, payload }) => {
-      console.log("用户进入插件", code, type, payload);
+      if (type === "regex") {
+        form.setFieldsValue({
+          domain: payload,
+          type: "A",
+          dns: ["114.114.114.114"],
+          timeout: 2,
+          tries: 3,
+        });
+        form.submit();
+      }
     });
   });
 
