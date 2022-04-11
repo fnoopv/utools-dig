@@ -103,7 +103,7 @@ const App = () => {
       title: "操作",
       key: "action",
       render: (text, record) => (
-          <CopyToClipboard text="hello"
+          <CopyToClipboard text={text.result}
             onCopy={() => message.success(`${text.result} 已复制~`, 3)}>
             <a>复制</a>
           </CopyToClipboard>
