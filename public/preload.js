@@ -7,8 +7,8 @@ window.query = async (values) => {
   };
 
   const resolverOption = {
-    timeout: 5,
-    tries: 3,
+    timeout: values.timeout,
+    tries: values.tries
   };
 
   const resolver = new Resolver(resolverOption);
