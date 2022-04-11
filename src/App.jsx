@@ -10,6 +10,7 @@ import {
   Table,
   message,
   InputNumber,
+  Spin,
 } from "antd";
 import { DownOutlined, UpOutlined } from "@ant-design/icons";
 import { CopyToClipboard } from "react-copy-to-clipboard";
@@ -21,6 +22,7 @@ const App = () => {
   const [expand, setExpand] = useState(false);
   const [address, setAddress] = useState([]);
   const [queryValue, setQueryValue] = useState({});
+  const [spin, setSpin] = useState(false);
 
   const reg = new RegExp(
     "[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9](?:.[a-zA-Z]{2,})+"
@@ -103,6 +105,7 @@ const App = () => {
   };
 
   async function queryDomain(values) {
+    setSpin(true)
     setQueryValue(values);
     const result = await query(values);
     if (result.msg.length > 0) {
@@ -126,6 +129,7 @@ const App = () => {
       }
       setAddress(result.data);
     }
+    setSpin(false);
   }
 
   async function query(values) {
@@ -177,6 +181,7 @@ const App = () => {
 
   return (
     <div className="App">
+      <Spin spinning={spin} tip="解析中..." delay={500}>
       <Form
         form={form}
         name="dig"
@@ -249,6 +254,7 @@ const App = () => {
           <Empty description={<span>暂无解析</span>} />
         )}
       </div>
+      </Spin>
     </div>
   );
 };
