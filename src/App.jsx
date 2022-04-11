@@ -44,7 +44,7 @@ const App = () => {
   const getFields = () => {
     const children = [
       <Col span={6} offset={4} key="type">
-        <Form.Item name="type" label="记录类型">
+        <Form.Item name="type" label="记录类型" tooltip="指定记录类型">
           <Select>
             <Option value="A">A</Option>
             <Option value="AAAA">AAAA</Option>
@@ -56,7 +56,12 @@ const App = () => {
         </Form.Item>
       </Col>,
       <Col span={8} key="dns">
-        <Form.Item name="dns" label="DNS地址" tooltip="DNS服务地址,可以多选" rules={[{required: true, message: "必须指定DNS服务器"}]}>
+        <Form.Item
+          name="dns"
+          label="DNS地址"
+          tooltip="DNS服务地址,可以多选"
+          rules={[{ type: "array", min: 1, message: "必须指定DNS服务器" }]}
+        >
           <Select mode="multiple" placeholder="选择DNS服务器">
             <Option key="114.114.114.114">114.114.114.114</Option>
             <Option key="119.29.29.29">119.29.29.29</Option>
@@ -82,7 +87,7 @@ const App = () => {
     ];
 
     if (expand) {
-      children.push(...advanceChildren)
+      children.push(...advanceChildren);
     }
 
     return children;
